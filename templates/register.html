@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Nazamoblies</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'rg/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'rg/css/style.css' %}">
+
+    <link href="{% static 'fd/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static 'fd/css/style.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+</head>
+<body>
+
+
+<header class="item header margin-top-0">
+<div class="wrapper">
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="/" class="navbar-brand brand"> Naza mobiles </a>
+		</div>
+
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="propClone"><a href="/">Home</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
+
+</div>
+</header>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form action="{% url 'register' %}" method="post"  class="signup-form">
+                        {% csrf_token %}
+                        <h2 class="form-title">Create account</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="username" placeholder="Username"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="name" placeholder="Your Name"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="mob" placeholder="Mobile Number"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email"  placeholder="Your Email"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="password1"  placeholder="Password"/>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password2"  placeholder="Repeat your password"/>
+                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />-->
+<!--                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>-->
+<!--                        </div>-->
+                        <div class="form-group">
+                            <input type="submit" class="form-submit" value="Sign up"/>
+                        </div>
+                    </form>
+
+                    <div style="text-align:center;padding-top:8%;color:red;">
+                        {% for message in messages %}
+                        <h4 style="font-size:3ex;">{{message}}</h4>
+                        {% endfor %}
+
+                    </div>
+                    <p class="loginhere">
+                        Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'rg/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'rg/js/main.js' %}"></script>
+
+
+    <script src="{% static 'fd/js/jquery-.js' %}"></script>
+    <script src="{% static 'fd/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'fd/js/anim.js' %}"></script>
+    <script>
+    //----HOVER CAPTION---//
+    jQuery(document).ready(function ($) {
+        $('.fadeshop').hover(
+            function(){
+                $(this).find('.captionshop').fadeIn(150);
+            },
+            function(){
+                $(this).find('.captionshop').fadeOut(150);
+            }
+        );
+    });
+    </script>
+</body>
+</html>

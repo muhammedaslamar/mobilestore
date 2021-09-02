@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="">
+<link href="{% static 'fd/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="{% static 'fd/css/style.css' %}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER =============================-->
+<header class="item header margin-top-0">
+<div class="wrapper">
+
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="index.html" class="navbar-brand brand"> NAZA MOBILES </a>
+		</div>
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="propClone"><a href="/">Home</a></li>
+
+			</ul>
+		</div>
+	</div>
+	</nav>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="text-pageheader">
+					<div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.0s">
+						 {{pr.name}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</header>
+
+<!-- CONTENT =============================-->
+<section class="item content">
+<div class="container toparea">
+	<div class="underlined-title">
+		<div class="editContent">
+			<h1 class="text-center latestitems">Details of {{pr.name}}</h1>
+		</div>
+		<div class="wow-hr type_short">
+			<span class="wow-hr-h">
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="productbox">
+				<img src="{{pr.img.url}}" alt="">
+				<div class="clearfix">
+				</div>
+				<br/>
+				<div class="product-details text-left">
+					<p>
+						{{pr.desc}}
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			{% if pr.stock > 0 %}
+			<a href="{% url 'add' pr.id %}" class="btn btn-buynow">${{pr.price}} - Purchase</a>
+			{% else %}
+			<h2 style="color:red;"><b><i>Sorry Item not available!!!</i></b></h2>
+			{% endif %}
+			<div class="properties-box">
+				<ul class="unstyle">
+					<li><b class="propertyname">Name:</b> {{pr.name}}</li>
+					<li><b class="propertyname">Stock:</b> {{pr.stock}}</li>
+					<li><b class="propertyname">Price:</b> {{pr.price}} $</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<!-- CALL TO ACTION =============================-->
+
+
+<!-- FOOTER =============================-->
+<div class="footer text-center">
+	<div class="container">
+		<div class="row">
+			<p class="footernote">
+				 Connect with Nazamobiles
+			</p>
+			<ul class="social-iconsfooter">
+				<li><a href="#"><i class="fa fa-phone"></i></a></li>
+				<li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+<!-- Load JS here for greater good =============================-->
+<script src="{% static 'fd/js/jquery-.js' %}"></script>
+<script src="{% static 'fd/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'fd/js/anim.js' %}"></script>
+
+</body>
+</html>

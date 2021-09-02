@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="">
+<link href="{% static 'fd/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="{% static 'fd/css/style.css' %}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- HEADER =============================-->
+<header class="item header margin-top-0">
+<div class="wrapper">
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="/" class="navbar-brand brand"> Naza mobiles </a>
+		</div>
+
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="propClone"><a href="/">Home</a></li>
+				<li class="propClone"><a href="{% url 'register' %}">Register</a></li>
+				<li class="propClone"><a href="accounts/login">Login</a></li>
+				<li class="propClone"><a href="cart/cart" style="padding-left:20%;padding-top:43%;"><i class="fa fa-shopping-cart" style="font-size:25px;color:blue;">&nbsp;<i>{{itc}}</i></i></a></li>
+				<li style="padding-top:20px;padding-left:17px;color:blue;">
+					<form class="form-inline" action="search" method="get">
+    					<input class="form-control mr-sm-2" type="search" placeholder="Enter The Item Name" aria-label="Search" name="q" >
+    					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  					</form>
+				</li>
+				{% if user.is_authenticated %}
+				<li class="propClone" ><a href="accounts/logout">{{user.username}} Logot</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="text-homeimage">
+					<div class="maintext-image" data-scrollreveal="enter top over 1.5s after 0.1s">
+						 Increase Digital Sales
+					</div>
+					{% if user.is_authenticated %}
+					<div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.3s">
+						 Dear {{user.username}}
+					</div>
+					{% endif %}
+					<div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.3s">
+						 Welcome To Naza mobiles
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</header>
+
+
+<!-- STEPS =============================-->
+<div class="item content">
+	<div class="container toparea">
+		<div class="row text-center">
+			<div class="col-md-4">
+				<div class="col editContent">
+					<span class="numberstep"><i class="fa fa-shopping-cart"></i></span>
+					<h3 class="numbertext">Choose our Products</h3>
+					<p>
+						 Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					</p>
+				</div>
+				<!-- /.col-md-4 -->
+			</div>
+			<!-- /.col-md-4 col -->
+			<div class="col-md-4 editContent">
+				<div class="col">
+					<span class="numberstep"><i class="fa fa-gift"></i></span>
+					<h3 class="numbertext">Pay with PayPal or Card</h3>
+					<p>
+						 Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					</p>
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.col-md-4 col -->
+			<div class="col-md-4 editContent">
+				<div class="col">
+					<span class="numberstep"><i class="fa fa-download"></i></span>
+					<h3 class="numbertext">Get Instand Download</h3>
+					<p>
+						 Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Mobiles
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+	  {% for i in ct %}
+    <button class="dropdown-item" type="button"><a href="{{i.get_url}}">{{i.name}}</a></button>
+	  {% endfor %}
+  </div>
+
+</div>
+	<!-- LATEST ITEMS =============================-->
+<section class="item content">
+	<div class="container">
+		<div class="underlined-title">
+			<div class="editContent">
+				<h1 class="text-center latestitems">LATEST ITEMS</h1>
+			</div>
+			<div class="wow-hr type_short">
+				<span class="wow-hr-h">
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				</span>
+			</div>
+		</div>
+		<div class="row">
+	
+			<!-- /.productbox -->
+			{% for i in pg.object_list %}
+			<div class="col-md-4">
+				<div class="productbox">
+					<div class="fadeshop">
+						<div class="captionshop text-center" style="display: none;">
+							<h3>{{i.name}}</h3>
+							<p>
+								 {{i.desc|truncatechars:50}}
+							</p>
+							<p>
+								<a href="{% url 'add' i.id %}" class="learn-more detailslearn"><i class="fa fa-shopping-cart"></i> Purchase</a>
+								<a href="{{i.get_url}}" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
+							</p>
+						</div>
+						<span class="maxproduct"><img src="{{i.img.url}}" alt="" style="width:300px;height:300px;"></span>
+					</div>
+					<div class="product-details">
+						<a href="#">
+						<h1>{{i.name}}</h1>
+						</a>
+						<span class="price">
+						<span class="edd_price">${{i.price}}</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			
+			<!-- --------- -->
+		</div>
+	</div>
+</section>
+
+<div>
+
+	<center>
+		   {% for i in pg.paginator.page_range %}
+        <a href="?page={{i}}" class="btn btn-light btn-sm {% if pg.number == i %} active {% endif %}">{{i}}</a>
+        {% endfor %}
+	</center>
+</div>
+
+<!-- AREA =============================-->
+
+
+<!-- TESTIMONIAL =============================-->
+<div class="item content">
+	<div class="container">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="slide-text">
+				<div>
+					<h2><span class="uppercase">Awesome Support</span></h2>
+					<img src="http://wowthemes.net/demo/salique/salique-boxed/images/temp/avatar2.png" alt="Awesome Support">
+					<p>
+						 The support... I can only say it's awesome. You make a product and you help people out any way you can even if it means that you have to log in on their dashboard to sort out any problems that customer might have. Simply Outstanding!
+					</p>
+					<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- FOOTER =============================-->
+<div class="footer text-center">
+	<div class="container">
+		<div class="row">
+			<p class="footernote">
+				 Connect with Nazamobiles
+			</p>
+			<ul class="social-iconsfooter">
+				<li><a href="#"><i class="fa fa-phone"></i></a></li>
+				<li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en-in"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="https://plus.google.com/https"><i class="fa fa-google-plus"></i></a></li>
+
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+<!-- SCRIPTS =============================-->
+<script src="{% static 'fd/js/jquery-.js' %}"></script>
+<script src="{% static 'fd/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'fd/js/anim.js' %}"></script>
+<script>
+//----HOVER CAPTION---//	  
+jQuery(document).ready(function ($) {
+	$('.fadeshop').hover(
+		function(){
+			$(this).find('.captionshop').fadeIn(150);
+		},
+		function(){
+			$(this).find('.captionshop').fadeOut(150);
+		}
+	);
+});
+</script>
+	
+</body>
+</html>
